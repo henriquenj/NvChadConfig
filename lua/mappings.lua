@@ -97,6 +97,8 @@ map("n", "<leader>gfl", builtin.git_bcommits, { desc = "Git log of current file"
 map("n", "<leader>bb", builtin.buffers, { desc = "Move between buffers" })
 map("n", "<leader>bd", "<cmd>confirm bdelete<CR>", { desc = "Close current buffer" })
 map("n", "<leader>fs", "<cmd>w<CR>", { desc = "Save file" })
+-- quit
+map("n", "<leader>qq", "<cmd>confirm qa<CR>", { desc = "Quit Neovim" })
 -- search in files
 map({"n","v"}, "<leader>*", builtin.grep_string, { desc = "Search word under cursor" })
 map("n", "<leader>/", builtin.live_grep, { desc = "Search whole repo" })
