@@ -6,6 +6,15 @@ local map = vim.keymap.set
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
+-- Emacs-style line navigation in normal/insert/cmdline contexts.
+map("n", "<C-a>", "0", { desc = "Line start" })
+map("n", "<C-e>", "$", { desc = "Line end" })
+map("v", "<C-a>", "0", { desc = "Line start" })
+map("v", "<C-e>", "$", { desc = "Line end" })
+map("i", "<C-a>", "<C-o>0", { desc = "Line start" })
+map("i", "<C-e>", "<End>", { desc = "Line end" })
+map("c", "<C-a>", "<Home>", { desc = "Cmdline start" })
+map("c", "<C-e>", "<End>", { desc = "Cmdline end" })
 
 local builtin = require("telescope.builtin")
 local actions = require("telescope.actions")

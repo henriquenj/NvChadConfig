@@ -20,6 +20,8 @@ git clone https://github.com/henriquenj/NvChadConfig ~/.config/nvim && nvim
 |--------------------|--------------------------|-------------------------------------------|
 | `<leader><leader>` | Telescope commands       | Like `SPC SPC` command palette flow       |
 | `<C-s>`            | Search in current buffer | Fast in-buffer search workflow            |
+| `<C-a>`            | Move to line start       | Emacs-style Home in n/v/i/c modes         |
+| `<C-e>`            | Move to line end         | Emacs-style End in n/v/i/c modes          |
 | `<leader>gs`       | Open Neogit UI           | Leader-based git status entry point       |
 | `<leader>gfl`      | Git log for current file | File-focused git history from leader menu |
 | `<leader>bb`       | List/switch buffers      | Buffer switching from a leader prefix     |
