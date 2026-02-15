@@ -16,6 +16,39 @@ map("i", "<C-e>", "<End>", { desc = "Line end" })
 map("c", "<C-a>", "<Home>", { desc = "Cmdline start" })
 map("c", "<C-e>", "<End>", { desc = "Cmdline end" })
 
+-- Window management (Spacemacs-style under SPC w).
+local function toggle_window_maximize()
+  local current_win = vim.api.nvim_get_current_win()
+  local tab = vim.t
+
+  if tab.zoomed_win == current_win and tab.zoom_restore_cmd then
+    vim.cmd(tab.zoom_restore_cmd)
+    tab.zoomed_win = nil
+    tab.zoom_restore_cmd = nil
+    return
+  end
+
+  tab.zoomed_win = current_win
+  tab.zoom_restore_cmd = vim.fn.winrestcmd()
+  vim.cmd "wincmd |"
+  vim.cmd "wincmd _"
+end
+
+map("n", "<leader>w<Tab>", "<C-w>p", { desc = "Switch to previous window" })
+map("n", "<leader>w=", "<C-w>=", { desc = "Balance windows" })
+map("n", "<leader>w_", "<C-w>|", { desc = "Maximize window width" })
+map("n", "<leader>wd", "<C-w>c", { desc = "Delete window" })
+map("n", "<leader>wh", "<C-w>h", { desc = "Move to left window" })
+map("n", "<leader>wj", "<C-w>j", { desc = "Move to window below" })
+map("n", "<leader>wk", "<C-w>k", { desc = "Move to window above" })
+map("n", "<leader>wl", "<C-w>l", { desc = "Move to right window" })
+map("n", "<leader>wm", toggle_window_maximize, { desc = "Toggle window maximize" })
+
+-- Emacs-style window shortcuts.
+map("n", "<C-x>1", "<C-w>o", { desc = "Close other windows" })
+map("n", "<C-x>2", "<C-w>s", { desc = "Split window below" })
+map("n", "<C-x>3", "<C-w>v", { desc = "Split window right" })
+
 local builtin = require("telescope.builtin")
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")

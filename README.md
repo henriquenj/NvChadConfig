@@ -27,6 +27,15 @@ git clone https://github.com/henriquenj/NvChadConfig ~/.config/nvim && nvim
 | `<leader>bb`       | List/switch buffers      | Buffer switching from a leader prefix     |
 | `<leader>bd`       | Delete current buffer    | Quick buffer close from buffer group      |
 | `<leader>fs`       | Save file                | File save under `SPC f`-style group       |
+| `<leader>w<Tab>`   | Switch to previous window| Alternate between two windows             |
+| `<leader>w=`       | Balance windows          | Quickly normalize split sizes             |
+| `<leader>w_`       | Maximize window width    | Focus current split horizontally          |
+| `<leader>wd`       | Delete window            | Close active split                        |
+| `<leader>wh/j/k/l` | Move across windows      | Directional split navigation              |
+| `<leader>wm`       | Toggle window maximize   | Maximize and restore current split        |
+| `<C-x>1`           | Close other windows      | Emacs-style single-window layout          |
+| `<C-x>2`           | Split window below       | Emacs-style horizontal split              |
+| `<C-x>3`           | Split window right       | Emacs-style vertical split                |
 | `<leader>*`        | Grep word under cursor   | Search symbol/word across project         |
 | `<leader>/`        | Live grep in repo        | Project-wide text search entry point      |
 | `<leader>pf`       | Git files picker         | Fast project file jump from leader menu   |
