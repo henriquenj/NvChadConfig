@@ -8,7 +8,45 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
 local builtin = require("telescope.builtin")
-map("n", "<leader><leader>", builtin.commands, { desc = "Command palette (Telescope commands)" })
+local actions = require("telescope.actions")
+local action_state = require("telescope.actions.state")
+local conf = require("telescope.config").values
+local finders = require("telescope.finders")
+local pickers = require("telescope.pickers")
+
+-- Telescope builtin.commands only lists user/plugin commands.
+-- This uses Vim command completion so <leader><leader> behaves closer to Spacemacs M-x.
+local function command_palette()
+  local commands = vim.fn.getcompletion("", "command")
+  table.sort(commands)
+
+  pickers
+    .new({}, {
+      prompt_title = "Command Palette",
+      finder = finders.new_table({
+        results = commands,
+      }),
+      sorter = conf.generic_sorter({}),
+      attach_mappings = function(prompt_bufnr)
+        actions.select_default:replace(function()
+          local selection = action_state.get_selected_entry()
+          actions.close(prompt_bufnr)
+          if not selection then
+            return
+          end
+
+          -- Insert the selected command into ":" prompt so args can be typed before execution.
+          local cmd = selection[1] or selection.value
+          local keys = vim.api.nvim_replace_termcodes(":" .. cmd .. " ", true, false, true)
+          vim.api.nvim_feedkeys(keys, "nt", false)
+        end)
+        return true
+      end,
+    })
+    :find()
+end
+
+map("n", "<leader><leader>", command_palette, { desc = "Command palette (all commands)" })
 map("n", "<C-s>", builtin.current_buffer_fuzzy_find, { desc = "Search in the buffer" })
 -- git
 map("n", "<leader>gs", "<cmd>Neogit<cr>" , { desc = "Show Neogit UI" })
