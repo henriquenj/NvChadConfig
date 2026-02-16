@@ -27,6 +27,7 @@ git clone https://github.com/henriquenj/NvChadConfig ~/.config/nvim && nvim
 | `<leader>bb`       | List/switch buffers      | Buffer switching from a leader prefix     |
 | `<leader>bd`       | Delete current buffer    | Quick buffer close from buffer group      |
 | `<leader>fs`       | Save file                | File save under `SPC f`-style group       |
+| `<leader>fr`       | Recent files             | Reopen recent files from file group       |
 | `<leader>qq`       | Quit Neovim (confirm)    | Prompt before quitting unsaved buffers    |
 | `<leader>w<Tab>`   | Switch to previous window| Alternate between two windows             |
 | `<leader>w=`       | Balance windows          | Quickly normalize split sizes             |
