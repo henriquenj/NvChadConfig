@@ -105,6 +105,9 @@ map({"n","v"}, "<leader>*", builtin.grep_string, { desc = "Search word under cur
 map("n", "<leader>/", builtin.live_grep, { desc = "Search whole repo" })
 -- search for files
 map("n", "<leader>pf", builtin.git_files, { desc = "Search files in repo" })
+-- Scroll view without moving cursor
+map("n", "<C-j>", "<C-e>", { desc = "Scroll down" })
+map("n", "<C-k>", "<C-y>", { desc = "Scroll up" })
 
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
